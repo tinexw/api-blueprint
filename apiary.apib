@@ -1,38 +1,68 @@
 FORMAT: 1A
-HOST: http://www.google.com
+HOST: http://www.kreuzwerker.de
 
-# donut
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+# World Cup API
+The **World Cup API** lets you manage World Cup games.
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Group Games
+Game related resources.
 
-## Notes Collection [/notes]
-### List all Notes [GET]
+
+
+
+
+## Game Collection [/games]
+
++ Model
+
+    + Body
+    
+            [
+                {
+                    "id": 1, 
+                    "home": "Brazil",
+                    "guest": "Croatia",
+                    "location": "Sao Paolo",
+                    "result": "3:1"
+                }, 
+                {
+                    "id": 2, 
+                    "home": "Mexico",
+                    "guest": "Cameroon",
+                    "location: "Natal"
+                }
+            ]
+        
+### List all Games [GET]
 + Response 200 (application/json)
 
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
+        [Game Collection][]
 
-### Create a Note [POST]
+### Create a Game [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+            {
+                "home": "Brazil",
+                "guest": "Spain",
+                "location": "Belo Horizonte"
+            }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+            {
+                "id": 49,
+                "home": "Brazil",
+                "guest": "Spain",
+                "location": "Belo Horizonte"
+            }
 
-## Note [/notes/{id}]
-A single Note object with all its details
+## Game [/games/{id}]
+A single game.
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + id (required, number, `1`) ... Numeric `id` of the game.
 
-### Retrieve a Note [GET]
+### Retrieve a Game [GET]
 + Response 200 (application/json)
 
     + Header
@@ -41,7 +71,15 @@ A single Note object with all its details
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+                {
+                    "id": 1, 
+                    "home": "Brazil",
+                    "guest": "Croatia",
+                    "location": "Sao Paolo",
+                    "result": "3:1"
+                }
 
-### Remove a Note [DELETE]
++ Response 404
+
+### Remove a Game [DELETE]
 + Response 204
