@@ -4,82 +4,27 @@ HOST: http://www.kreuzwerker.de
 # World Cup API
 The **World Cup API** lets you manage World Cup games.
 
-# Group Games
-Game related resources.
 
-
-
-
-
-## Game Collection [/games]
+# Game [/games/{id}]
+A single world cup game.
 
 + Model
 
     + Body
     
-            [
-                {
-                    "id": 1, 
-                    "home": "Brazil",
-                    "guest": "Croatia",
-                    "location": "Sao Paolo",
-                    "result": "3:1"
-                }, 
-                {
-                    "id": 2, 
-                    "home": "Mexico",
-                    "guest": "Cameroon",
-                    "location": "Natal"
-                }
-            ]
-        
-### List all Games [GET]
-+ Response 200 (application/json)
-
-    [Game Collection][]
-
-### Create a Game [POST]
-+ Request (application/json)
-
             {
-                "home": "Brazil",
-                "guest": "Spain",
-                "location": "Belo Horizonte"
+                "id": 2, 
+                "home": "Mexico",
+                "guest": "Cameroon",
+                "location": "Natal"
             }
-
-+ Response 201 (application/json)
-
-            {
-                "id": 49,
-                "home": "Brazil",
-                "guest": "Spain",
-                "location": "Belo Horizonte"
-            }
-
-## Game [/games/{id}]
-A single game.
-
+            
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the game.
 
-### Retrieve a Game [GET]
+# Retrieve a Game [GET]
 + Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-                {
-                    "id": 1, 
-                    "home": "Brazil",
-                    "guest": "Croatia",
-                    "location": "Sao Paolo",
-                    "result": "3:1"
-                }
+        
+    [Game][]
 
 + Response 404
-
-### Remove a Game [DELETE]
-+ Response 204
